@@ -1,0 +1,86 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class ArrayOperation
+{   int cc=0;
+    int sum;
+    int max=0;
+    void sub(int arr[])
+    {
+        int n=arr.length;
+        for(int i=0;i<n;i++)
+        {
+            for(int j=i;j<n;j++)
+            {   sum=0;
+                for(int k=i;k<=j;k++)
+                {   System.out.print(arr[k]+" ");sum=sum+arr[k];
+                        
+                }
+                cc=cc+1;
+                if(sum>max)
+                {   max=sum;
+                    
+                }
+                System.out.println();
+            }
+        }
+        
+    }
+    void maxsum()
+    {
+        System.out.println("sum is "+max);
+        
+    }
+    void count()
+    {    System.out.print("nos of sub arrays are :"+cc);
+        
+    }
+    int s=0;
+    int start,end;
+    int startindex=0,endindex;
+    void maxSubArray(int arr[])             //implementation of kadane s algorithm
+    {   int n=arr.length;
+        start=arr[0];  
+        end=0;
+        for(int i=0;i<n;i++)
+        {   end=end+arr[i];
+            if(start<end)
+            {   start=end;
+                startindex=startindex;
+                endindex=i;
+                
+            }
+            if(end<0)
+            {   end=0;
+                startindex=startindex+1;
+                
+            }
+        }
+    System.out.println(end);  
+    for(int g=startindex;g<=endindex;g++)
+    {   System.out.print(arr[g]+" ");
+        
+    }
+    }
+   
+}
+class Codechef
+{
+	public static void main (String[] args) throws Exception
+	{
+        int arr[]= {1,5,1,9,6,7,3};
+        ArrayOperation a=new ArrayOperation();
+        a.sub(arr);
+        System.out.println();
+        a.count();
+        a.maxsum();
+        a. maxSubArray(arr);
+    }
+}
+	    	// your code goes here
+	
+
